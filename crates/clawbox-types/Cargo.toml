@@ -1,0 +1,17 @@
+[package]
+name = "clawbox-types"
+description = "Shared types for the clawbox sandboxed agent execution service"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+keywords = ["sandbox", "agent", "types", "wasm", "security"]
+categories = ["data-structures", "wasm"]
+readme = "README.md"
+
+[dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }

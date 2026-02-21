@@ -1,0 +1,40 @@
+[package]
+name = "clawbox"
+description = "Sandboxed agent execution service — secure containers for externally-facing AI agents"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+keywords = ["sandbox", "agent", "cli", "wasm", "security"]
+categories = ["command-line-utilities", "development-tools"]
+readme = "README.md"
+
+[[bin]]
+name = "clawbox"
+path = "src/main.rs"
+
+[features]
+default = ["docker"]
+docker = ["clawbox-server/docker"]
+
+[dependencies]
+clawbox-server = { path = "../clawbox-server", version = "0.1.0" }
+clawbox-types = { path = "../clawbox-types", version = "0.1.0" }
+tokio = { workspace = true }
+axum = { workspace = true }
+clap = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+anyhow = { workspace = true }
+reqwest = { workspace = true }
+serde_json = { workspace = true }
+serde = { workspace = true }
+toml = { workspace = true }
+toml_edit = "0.25"
+clawbox-proxy = { path = "../clawbox-proxy", version = "0.1.0" }
+rand = { workspace = true }
+
+[dev-dependencies]
+serial_test = "3"
+tempfile = "3"

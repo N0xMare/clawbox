@@ -1,0 +1,30 @@
+[package]
+name = "clawbox-proxy"
+description = "Network proxy with allowlisting, credential injection, and leak detection"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+keywords = ["proxy", "security", "allowlist", "credential", "network"]
+categories = ["web-programming", "network-programming"]
+readme = "README.md"
+
+[dependencies]
+clawbox-types = { path = "../clawbox-types", version = "0.1.0" }
+tokio = { workspace = true }
+hyper = { workspace = true }
+reqwest = { workspace = true }
+tracing = { workspace = true }
+thiserror = { workspace = true }
+regex = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+url = { workspace = true }
+aes-gcm = { workspace = true }
+rand = { workspace = true }
+anyhow = { workspace = true }
+chrono = { workspace = true }
+zeroize = { workspace = true }
+percent-encoding = "2"
+base64 = { workspace = true }

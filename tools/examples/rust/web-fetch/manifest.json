@@ -1,0 +1,32 @@
+{
+  "tool": {
+    "name": "web_fetch",
+    "description": "Fetch a URL and return its content. Extracts readable text from HTML pages by stripping tags. Returns raw content for non-HTML responses.",
+    "version": "0.1.0"
+  },
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "url": { "type": "string", "description": "URL to fetch" },
+      "max_length": { "type": "integer", "description": "Maximum response length in characters (default 50000)", "default": 50000 }
+    },
+    "required": ["url"]
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "url": { "type": "string" },
+      "content_type": { "type": "string" },
+      "content": { "type": "string" },
+      "length": { "type": "integer" },
+      "truncated": { "type": "boolean" }
+    }
+  },
+  "network": {
+    "allowlist": [],
+    "max_concurrent": 3
+  },
+  "credentials": {
+    "available": []
+  }
+}

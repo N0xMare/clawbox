@@ -1,0 +1,85 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/clawbox",
+    "crates/clawbox-server",
+    "crates/clawbox-containers",
+    "crates/clawbox-sandbox",
+    "crates/clawbox-proxy",
+    "crates/clawbox-types",
+]
+exclude = [
+    "tools/examples/rust/echo",
+    "tools/examples/rust/http-request",
+    "tools/examples/rust/web-fetch",
+    "tools/examples/rust/web-search",
+    "tools/examples/rust/github",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.93"
+license = "MIT"
+repository = "https://github.com/N0xMare/clawbox"
+keywords = ["sandbox", "wasm", "agent", "security", "proxy"]
+categories = ["web-programming", "wasm", "development-tools"]
+
+[workspace.dependencies]
+async-trait = "0.1"
+# Async runtime
+tokio = { version = "1.49", features = ["full"] }
+
+# HTTP server
+axum = { version = "0.8.8", features = ["macros"] }
+tower = { version = "0.5.3" }
+tower-http = { version = "0.6.8", features = ["cors", "trace", "auth"] }
+
+# HTTP client (proxy forwarding)
+reqwest = { version = "0.13.2", features = ["blocking", "json", "rustls"], default-features = false }
+hyper = { version = "1.8" }
+
+# WASM runtime
+wasmtime = { version = "41.0" }
+
+# Docker
+bollard = { version = "0.20" }
+futures-util = { version = "0.3.32" }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = { version = "1.0" }
+toml = { version = "1.0" }
+
+# Crypto
+aes-gcm = { version = "0.10.3" }
+rand = { version = "0.9" }
+
+# CLI
+clap = { version = "4.5", features = ["derive"] }
+
+# Logging
+tracing = { version = "0.1.44" }
+tracing-subscriber = { version = "0.3.22", features = ["json", "env-filter"] }
+
+# Error handling
+thiserror = { version = "2.0" }
+anyhow = { version = "1.0" }
+
+# Misc
+uuid = { version = "1.21", features = ["v4", "serde"] }
+chrono = { version = "0.4.43", features = ["serde"] }
+regex = { version = "1.12" }
+url = { version = "2.5" }
+subtle = { version = "2.6" }
+zeroize = { version = "1.8", features = ["derive"] }
+base64 = { version = "0.22" }
+notify = { version = "8" }
+metrics = { version = "0.24" }
+metrics-exporter-prometheus = { version = "0.16", default-features = false }
+
+tempfile = { version = "3" }
+[profile.release]
+lto = true
+strip = true
+codegen-units = 1

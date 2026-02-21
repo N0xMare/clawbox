@@ -1,0 +1,39 @@
+{
+  "tool": {
+    "name": "web_search",
+    "description": "Search the web using Brave Search API. Returns titles, URLs, and snippets for the top results.",
+    "version": "0.1.0"
+  },
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "query": { "type": "string", "description": "Search query" },
+      "count": { "type": "integer", "description": "Number of results (1-10, default 5)", "default": 5 }
+    },
+    "required": ["query"]
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "results": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string" },
+            "url": { "type": "string" },
+            "snippet": { "type": "string" }
+          }
+        }
+      },
+      "total_results": { "type": "integer" }
+    }
+  },
+  "network": {
+    "allowlist": ["api.search.brave.com"],
+    "max_concurrent": 3
+  },
+  "credentials": {
+    "available": ["brave_search"]
+  }
+}

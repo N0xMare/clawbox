@@ -1,0 +1,24 @@
+{
+  "tool": {
+    "name": "http_request",
+    "description": "Make HTTP requests to allowlisted URLs via the clawbox proxy. Supports GET, POST, PUT, DELETE with headers and body.",
+    "version": "0.1.0"
+  },
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "url": { "type": "string", "description": "The URL to request" },
+      "method": { "type": "string", "enum": ["GET", "POST", "PUT", "DELETE"], "default": "GET" },
+      "headers": { "type": "object", "additionalProperties": { "type": "string" } },
+      "body": { "type": "string", "description": "Request body (for POST/PUT)" }
+    },
+    "required": ["url"]
+  },
+  "network": {
+    "allowlist": [],
+    "max_concurrent": 5
+  },
+  "credentials": {
+    "available": []
+  }
+}

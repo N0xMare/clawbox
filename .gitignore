@@ -1,0 +1,23 @@
+# Build
+/target/
+tools/examples/*/target/
+tools/examples/*/*/target/
+
+# Runtime artifacts
+audit/
+*.enc
+*.jsonl
+
+# OS
+.DS_Store
+*.swp
+*~
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# WASM tools
+tools/wasm/*.wasm
+tools/examples/**/*.wasm

@@ -1,0 +1,22 @@
+{
+  "tool": {
+    "name": "echo",
+    "description": "Echo back the input parameters as JSON output. Useful for testing.",
+    "version": "0.1.0"
+  },
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "message": { "type": "string", "description": "The message to echo back" }
+    },
+    "additionalProperties": true
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "tool": { "type": "string" },
+      "echo": { "type": "object" }
+    },
+    "required": ["tool", "echo"]
+  }
+}

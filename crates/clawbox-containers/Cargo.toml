@@ -1,0 +1,29 @@
+[package]
+name = "clawbox-containers"
+description = "Docker container management for sandboxed sub-agent execution"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+keywords = ["docker", "container", "sandbox", "agent", "orchestration"]
+categories = ["virtualization", "development-tools"]
+readme = "README.md"
+
+[dependencies]
+async-trait = { workspace = true }
+clawbox-types = { path = "../clawbox-types", version = "0.1.0" }
+bollard = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+futures-util = { workspace = true }
+rand = { workspace = true }
+subtle = { workspace = true }
+[dev-dependencies]
+tempfile = { workspace = true }

@@ -1,0 +1,23 @@
+[package]
+name = "clawbox-sandbox"
+description = "WASM sandboxing engine using wasmtime for isolated tool execution"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+keywords = ["wasm", "sandbox", "wasmtime", "security", "isolation"]
+categories = ["wasm", "development-tools"]
+readme = "README.md"
+
+[dependencies]
+clawbox-types = { path = "../clawbox-types", version = "0.1.0" }
+wasmtime = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+wasmtime-wasi = { version = "41.0", features = ["p1"] }
+notify = { workspace = true }
