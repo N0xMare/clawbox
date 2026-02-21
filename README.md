@@ -161,6 +161,10 @@ See [docs/api.md](docs/api.md) for the full configuration reference.
 - [Security Policy](SECURITY.md)
 - [Contributing](CONTRIBUTING.md)
 
+## Acknowledgements
+
+Inspired by [ironclaw](https://github.com/nearai/ironclaw) by Near AI.
+
 ## License
 
 [MIT](LICENSE)
