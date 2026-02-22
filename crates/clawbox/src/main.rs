@@ -56,6 +56,9 @@ enum Commands {
         token: Option<String>,
         /// Tool name to execute.
         tool: String,
+        /// Comma-separated credentials to request (e.g. "brave_search,github").
+        #[arg(long, value_delimiter = ',')]
+        credentials: Option<Vec<String>>,
         /// JSON parameters (or "-" for stdin).
         params: Option<String>,
     },
@@ -531,6 +534,7 @@ default_image = "ghcr.io/n0xmare/clawbox-agent:latest"
             port,
             token,
             tool,
+            credentials,
             params,
         } => {
             let auth = resolve_auth_token(&token)?;
@@ -544,7 +548,10 @@ default_image = "ghcr.io/n0xmare/clawbox-agent:latest"
                 None => Value::Object(serde_json::Map::new()),
             };
             let url = format!("http://{host}:{port}/execute");
-            let body = serde_json::json!({ "tool": tool, "params": params_value });
+            let mut body = serde_json::json!({ "tool": tool, "params": params_value });
+            if let Some(creds) = credentials {
+                body["capabilities"] = serde_json::json!({ "credentials": creds });
+            }
             let client = reqwest::Client::new();
             let resp = client
                 .post(&url)
